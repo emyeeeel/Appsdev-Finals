@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finals - Activity 1</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function getRandomColor() {
+            const r = getRandom(0, 255);
+            const g = getRandom(0, 255);
+            const b = getRandom(0, 255);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function getRandomBorderWidth() {
+            return `${getRandom(1, 20)}px`;
+        }
+
+        // Create 5 div elements
+        for (let i = 0; i < 5; i++) {
+            const div = document.createElement('div');
+            
+            const width = getRandom(20, 100);
+            const height = getRandom(20, 100);
+            div.style.width = `${width}px`;
+            div.style.height = `${height}px`;
+            
+            div.style.backgroundColor = getRandomColor();
+            
+            div.style.color = getRandomColor();
+            
+            div.style.position = 'absolute';
+            div.style.top = `${getRandom(0, window.innerHeight - height)}px`;
+            div.style.left = `${getRandom(0, window.innerWidth - width)}px`;
+            
+            div.style.borderRadius = `${getRandom(0, 50)}%`;
+            
+            div.style.border = `${getRandomBorderWidth()} solid ${getRandomColor()}`;
+            
+            const strong = document.createElement('strong');
+            strong.textContent = 'div';
+            div.appendChild(strong);
+            
+            document.body.appendChild(div);
+        }
+    </script>
+</body>
+</html>

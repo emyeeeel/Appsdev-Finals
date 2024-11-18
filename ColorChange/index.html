@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Changer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    .container {
+      padding: 5px;
+      width: 20%;
+      height: 40%;
+      margin: 0 auto;
+      text-align: left;
+      border: 1px solid black;
+    }
+    .color-display {
+      height: 100px;
+      width: 80%;
+      margin-top: 20px;
+      border: 1px solid black;
+    }
+    input[type="text"] {
+      font-size: 10px;
+      width: 70%;
+    }
+    button {
+      font-size: 10px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <input type="text" id="colorInput">
+    <div id="errorMessage" style="color: red; font-size: 10px;"></div>
+    <div id="colorDisplay" class="color-display"></div>
+    <button id="updateColorBtn">Update Color</button>
+  </div>
+
+  <script>
+    const colorInput = document.getElementById('colorInput');
+    const colorDisplay = document.getElementById('colorDisplay');
+    const updateColorBtn = document.getElementById('updateColorBtn');
+    const errorMessage = document.getElementById('errorMessage');
+
+    function updateColor() {
+      const colorValue = colorInput.value;
+      if (isValidColor(colorValue)) {
+        colorDisplay.style.backgroundColor = colorValue;
+        errorMessage.textContent = '';
+      } else {
+        colorDisplay.style.backgroundColor = 'transparent';
+        errorMessage.textContent = 'Invalid color input. Please enter a valid color.';
+      }
+    }
+
+    function isValidColor(color) {
+      const s = new Option().style;
+      s.color = color;
+      return s.color !== '';
+    }
+
+    updateColorBtn.addEventListener('click', updateColor);
+  </script>
+
+</body>
+</html>
